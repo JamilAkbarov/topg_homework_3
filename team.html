@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Homework 3: How websites work?</title>
+  <meta charset="UTF-8" />
+  <meta name="project_HW3" content="Team">
+  <meta name="markup_languages" content="HTML,CSS,JavaScript">
+  <meta name="authors" content="Jamil Akbarov, Fidan Nazarova, Fuad Orujov, Madina Hajiyeva">
+  <link rel="stylesheet" href="Css/team_styles.css">     
+  <script src="JS/index.js"></script> 
+  <style>
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #group-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #main-page {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      transform: translateY(50px);
+    }
+
+    #main-content-section {
+      height: 2000px;
+      opacity: 1; 
+      transition: opacity 1s ease-in-out;
+    }
+
+    #loading-path {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="main">
+  <canvas id="starsCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('starsCanvas');
+    const ctx = canvas.getContext('2d');
+    const numStars = 500;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+
+    for (let i = 0; i < numStars; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 1.5;
+      const alpha = Math.random() * 0.8 + 0.2; 
+      stars.push({ x, y, radius, alpha });
+    }
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const star of stars) {
+        const vibration = Math.sin(Date.now() * 0.002 + star.x * 0.05) * 2; 
+        ctx.beginPath();
+        ctx.arc(star.x + vibration, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+        <style>
+
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+            }
+        
+            #group-name {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 40px;
+              opacity: 1;
+              transition: opacity 1s ease-in-out;
+            }
+        
+            #main-page {
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+              transform: translateY(50px);
+            }
+        
+
+            #main-content-section {
+              height: 2000px;
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+            }
+        
+
+            #loading-path {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              z-index: -1;
+            }
+
+          </style>
+        </head>
+        <body>
+          <svg id="loading-path" viewBox="0 0 100 100">
+            <path d="M 10,50 C 10,100 90,100 90,50 90,0 10,0 10,50 Z" fill="none" stroke="#333" stroke-width="2"/>
+          </svg>
+          <nav>
+            <a href="index.html"><h4>HOME</h4></a>
+            <a href="team.html"><h4>TEAM</h4></a>
+            <a href="hour.html"><h4>HOUR OF CODE</h4></a>
+            <a href="website.html"><h4>WEBSITE</h4></a>
+          </nav>
+          <br>
+          <br>
+          <br>
+          <br>
+          
+          <div id="group-name">Team 43</div>
+          <div id="main-page">
+            <div id="main-content-section">
+              <h1 class="home-hero-heading heading1">Meet Our Team</h1>
+              <br>
+          <br>
+          <br>
+          <br>
+              <h2>Team 43</h2>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <div class="person">
+                <h3>Jamil Akbarov</h3>
+                <p>My name is Jamil Akbarov, I am the student of ADA university, I am studying in the 1st course of SITE school in BSCS faculty. Prior to this project I had no experience in web development, except theory, so it was a good practice for me. I hope to continue enhancing this area od study since I am really ineterested in web development </p>
+                <a href="https://www.codecademy.com/profiles/Jake551"><img src="media/jamil.JPG" alt="Jamil Akbarov's photo"></a>
+              </div>
+              <div class="person">
+                <h3>Fidan Nazarova</h3>
+                <p>Hello, my name is Fidan Nazarova. I study at ADA University in the school of Information and Technology. I have always been interested in programming, that is why I chose the IT faculty. With the help of this project, now I can code and create a website.</p>
+                <a href="https://www.codecademy.com/profiles/fidannazarova"><img src="media/fidan.png" alt="Fidan Nazarova's photo"></a>
+              </div>
+              <div class="person">
+                <h3>Fuad Orujov</h3>
+                <p>I am a student at ADA University, and my name is Fuad Orujov. I am currently enrolled in the first course of SITE school's BSIT faculty. It was an excellent opportunity for me to develop my skills in web programming because, before this project, I had some experience in this field. As someone who is really interested in web development, I have high hopes that I will be able to continue to improve this area of study in my future projects.</p>
+                <a href="https://www.codecademy.com/profiles/micro1715894899"><img src="media/fuad.jpeg" alt="Fuad Orujov's photo"></a>
+              </div>
+              <div class="person">
+                <h3>Madina Hajiyeva</h3>
+                <p>My name is Madina Hajiyeva and I'm a first year computer engineering student at ADA University. I've only had minor experience in web development before, therefore this project lead to a thorough enhancement of my skills. I hope to be a part of another such opportunity and keep striving to develop more.</p>
+                <a href="https://www.codecademy.com/profiles/chip6055521125"><img src="media/madina.jpeg" alt="Madina Hajiyeva's photo">
+              </div>
+            </div>
+          </div>
+
+            </div>
+          </div>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Homework 3: How websites work?</title>
+  <meta charset="UTF-8" />
+  <meta name="project_HW3" content="ADA_Website">
+  <meta name="markup_languages" content="HTML,CSS,JavaScript">
+  <meta name="authors" content="Jamil Akbarov, Fidan Nazarova, Fuad Orujov, Madina Hajiyeva">
+  <link rel="stylesheet" href="Css/index_styles.css">     
+  <script src="JS/index.js"></script> 
+  <style>
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #group-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #main-page {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      transform: translateY(50px);
+    }
+
+    #main-content-section {
+      height: 2000px;
+      opacity: 1; 
+      transition: opacity 1s ease-in-out;
+    }
+
+    #loading-path {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="main">
+  <canvas id="starsCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('starsCanvas');
+    const ctx = canvas.getContext('2d');
+    const numStars = 500;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+
+    for (let i = 0; i < numStars; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 1.5;
+      const alpha = Math.random() * 0.8 + 0.2; 
+      stars.push({ x, y, radius, alpha });
+    }
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const star of stars) {
+        const vibration = Math.sin(Date.now() * 0.002 + star.x * 0.05) * 2; 
+        ctx.beginPath();
+        ctx.arc(star.x + vibration, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+        <style>
+
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+            }
+        
+            #group-name {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 40px;
+              opacity: 1;
+              transition: opacity 1s ease-in-out;
+            }
+        
+            #main-page {
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+              transform: translateY(50px);
+            }
+        
+
+            #main-content-section {
+              height: 2000px;
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+            }
+        
+
+            #loading-path {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              z-index: -1;
+            }
+
+          </style>
+        </head>
+        <body>
+          <svg id="loading-path" viewBox="0 0 100 100">
+            <path d="M 10,50 C 10,100 90,100 90,50 90,0 10,0 10,50 Z" fill="none" stroke="#333" stroke-width="2"/>
+          </svg>
+          
+          <div id="group-name">Team 43</div>
+          <div id="main-page">
+            <div id="main-content-section">
+              <nav>
+                <a href="index.html"><h4>HOME</h4></a>
+                <a href="team.html"><h4>TEAM</h4></a>
+                <a href="hour.html"><h4>HOUR OF CODE</h4></a>
+                <a href="website.html"><h4>WEBSITE</h4></a>
+              </nav>
+              <h1>ADA University</h1>
+              <a href="https://www.ada.edu.az/"><img src="media/ada_logo_color.png" alt="ada_logo"></a>
+              <br/>
+              <h2>Homework 3:How websites work?</h2>
+              <br>
+              <h2>Team TOP G</h2>
+              <img src="media/topg.png">
+              <p>This particular website was constructed by the members of Team 43.
+                This website includes the information about the team, team members, hour of code event as well as the progress in this project which is construction of this website
+              </p>
+              <br/>
+
+              <p class="info">
+                First of all, all of our team members are the students of ADA Univesirty who are studying in the first course in the school of IT and Engineering(SITE).
+            On the first stage of the project we have passed the series of tasks in the code.org site which involved creating algorithms with the utilization of blocks.
+            On the second stage of our project we have visited one of schools in Baku, school №173, where the lesson regarding the introduction to coding was conducted.
+            On this stage of our project we are supposed to create this particular website which would described ourselves as well as the project that we are currently in process with.
+              </p>
+              <br/>
+              <br/>
+
+            </div>
+          </div>
+</body>
+</html>

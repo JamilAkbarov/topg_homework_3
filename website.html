@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Homework 3: How websites work?</title>
+  <meta charset="UTF-8" />
+  <meta name="project_HW3" content="Team">
+  <meta name="markup_languages" content="HTML,CSS,JavaScript">
+  <meta name="authors" content="Jamil Akbarov, Fidan Nazarova, Fuad Orujov, Madina Hajiyeva">
+  <link rel="stylesheet" href="Css/website_styles.css">     
+  <script src="JS/index.js"></script> 
+  <style>
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    #group-name {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 40px;
+      opacity: 1;
+      transition: opacity 1s ease-in-out;
+    }
+
+    #main-page {
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      transform: translateY(50px);
+    }
+
+    #main-content-section {
+      height: 2000px;
+      opacity: 1; 
+      transition: opacity 1s ease-in-out;
+    }
+
+    #loading-path {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body class="main">
+  <canvas id="starsCanvas"></canvas>
+  <script>
+    const canvas = document.getElementById('starsCanvas');
+    const ctx = canvas.getContext('2d');
+    const numStars = 500;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+
+    for (let i = 0; i < numStars; i++) {
+      const x = Math.random() * canvas.width;
+      const y = Math.random() * canvas.height;
+      const radius = Math.random() * 1.5;
+      const alpha = Math.random() * 0.8 + 0.2; 
+      stars.push({ x, y, radius, alpha });
+    }
+    function update() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (const star of stars) {
+        const vibration = Math.sin(Date.now() * 0.002 + star.x * 0.05) * 2; 
+        ctx.beginPath();
+        ctx.arc(star.x + vibration, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.alpha})`;
+        ctx.fill();
+        ctx.closePath();
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    update();
+
+
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  </script>
+        <style>
+
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+            }
+        
+            #group-name {
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              font-size: 40px;
+              opacity: 1;
+              transition: opacity 1s ease-in-out;
+            }
+        
+            #main-page {
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+              transform: translateY(50px);
+            }
+        
+
+            #main-content-section {
+              height: 2000px;
+              opacity: 0;
+              transition: opacity 1s ease-in-out;
+            }
+        
+
+            #loading-path {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              z-index: -1;
+            }
+
+          </style>
+        </head>
+        <body>
+          <svg id="loading-path" viewBox="0 0 100 100">
+            <path d="M 10,50 C 10,100 90,100 90,50 90,0 10,0 10,50 Z" fill="none" stroke="#333" stroke-width="2"/>
+          </svg>
+          <nav>
+            <a href="index.html"><h4>HOME</h4></a>
+            <a href="team.html"><h4>TEAM</h4></a>
+            <a href="hour.html"><h4>HOUR OF CODE</h4></a>
+            <a href="website.html"><h4>WEBSITE</h4></a>
+          </nav>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          
+          <div id="group-name">Team 43</div>
+          <div id="main-page">
+            <div id="main-content-section">
+              <h1 class="home-hero-heading heading1">Abour our Website</h1>
+              <br>
+          <br>
+          <br>
+          <br>
+          <p>Our team at ADA University started a fascinating web development project where we used HTML, CSS, and JavaScript to create a dynamic website. We started our adventure with extensive instruction on Codecademy, where we improved our coding abilities and acquired a firm grasp of these crucial web technologies.
+
+            There are four well-designed pages on our website, each with a certain function. Our team name is prominently displayed on the front page, which establishes the tone for a fun online experience. By visiting the Members page, users may explore comprehensive details on every member of the team, promoting openness and communication.
+
+            A highlight is the Hour of Code project website, which includes an extensive report on our coding activities together with eye-catching graphics. This part not only demonstrates our technical proficiency but also offers a glimpse into our creative and cooperative problem-solving methodology.
+
+            The last page explores the complexities of the entire undertaking and provides a thoughtful summary of how the website was developed. We provide visitors a behind-the-scenes peek at the development of our ADA University online project by sharing insights into the difficulties encountered and the victories attained during the project's lifecycle.
+          </p>
+
+
+          <h2>Codeacademy progress</h2>
+
+        <ol>
+            <li style="font-family: Lobster, cursive;"><a href="https://www.codecademy.com/profiles/Jake551">Jamil Akbarov</a></li>
+            <li style="font-family: Lobster, cursive;"><a href="https://www.codecademy.com/profiles/fidannazarova">Fidan Nazarova</a></li>
+            <li style="font-family: Lobster, cursive;"><a href="https://www.codecademy.com/profiles/micro1715894899">Fuad Orujov</a></li>
+            <li style="font-family: Lobster, cursive;"><a href="https://www.codecademy.com/profiles/chip6055521125">Madina Hajiyeva</a></li>
+        </ol>
+
+            </div>
+          </div>
+</body>
+</html>
